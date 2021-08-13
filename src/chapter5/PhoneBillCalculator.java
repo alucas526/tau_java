@@ -2,15 +2,15 @@ package chapter5;
 
 import java.util.Scanner;
 
-public class phoneBillCalculator {
+public class PhoneBillCalculator {
 
     // Initialize scanner
     static Scanner scanner = new Scanner(System.in);
 
     // Set overage price and tax rate
-    static double minutesOverCost = 0.25;
-    static double taxRate = 0.07;
     static double overageCost = 0;
+    static double overageRate = 0.25;
+    static double taxRate = 0.07;
 
     public static void main(String[] args) {
         // Determine base plan cost
@@ -27,7 +27,7 @@ public class phoneBillCalculator {
 
         // Calculate cost of overage
         if (minutesOver > 0){
-            overageCost = determineOverageCost(minutesOver, minutesOverCost);
+            overageCost = determineOverageCost(minutesOver, overageRate);
         }
 
         // Calculate subtotal
@@ -74,11 +74,14 @@ public class phoneBillCalculator {
 
     public static void printStatement(double basePlanCost, int planMinutes, int minutesOver, double overageCost, double subtotal, double tax, double totalCost){
         System.out.println("Phone Bill Statement");
-        System.out.println("Plan: $" + basePlanCost);
-        System.out.println("Minutes allotted: " + planMinutes);
+        System.out.println("Base plan minutes allotted: " + planMinutes);
+        System.out.println("Minutes Used: " + (planMinutes + minutesOver));
         if (minutesOver > 0){
             System.out.println("Minutes over: " + minutesOver);
-            System.out.println("Overage: $" + overageCost);
+            System.out.println("Base plan cost: $" + basePlanCost);
+            System.out.println("Overage cost: $" + overageCost);
+        } else {
+            System.out.println("Base plan cost: $" + basePlanCost);
         }
         System.out.println("Subotal: " + subtotal);
         System.out.println("Tax: $" + tax);

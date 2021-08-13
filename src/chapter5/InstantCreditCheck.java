@@ -47,8 +47,7 @@ public class InstantCreditCheck {
     public static boolean isUserEligible(double userSalary, int userCreditScore){
         if (userSalary >= minimumSalary && userCreditScore >= minimumCreditScore){
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
@@ -56,8 +55,7 @@ public class InstantCreditCheck {
     public static void informUser(boolean userEligibility){
         if(userEligibility){
             System.out.println("Congratulations! You're approved!");
-        }
-        else{
+        } else{
             System.out.println("We're sorry, your application was rejected.");
         }
 
